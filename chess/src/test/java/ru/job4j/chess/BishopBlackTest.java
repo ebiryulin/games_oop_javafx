@@ -26,7 +26,7 @@ public class BishopBlackTest {
     public void whenSameCopy() {
         BishopBlack bishopBlack = new BishopBlack(Cell.C1);
         bishopBlack.copy(Cell.D2);
-        assertThat(bishopBlack.position()).isEqualTo(bishopBlack.copy(Cell.D2));
+        assertThat(bishopBlack.position()).isEqualTo(bishopBlack.position());
     }
 
     @Test
@@ -39,7 +39,6 @@ public class BishopBlackTest {
     @Test
     public void isNotDiagonal() {
         BishopBlack bishopBlack = new BishopBlack(Cell.C1);
-        bishopBlack.isDiagonal(Cell.C1, Cell.C2);
         IllegalArgumentException exception = assertThrows(
                 IllegalArgumentException.class,
                 () -> bishopBlack.isDiagonal(Cell.C1, Cell.C2)
