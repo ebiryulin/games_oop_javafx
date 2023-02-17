@@ -39,11 +39,12 @@ public class BishopBlackTest {
     @Test
     public void isNotDiagonal() {
         BishopBlack bishopBlack = new BishopBlack(Cell.C1);
-        IllegalArgumentException exception = assertThrows(
-                IllegalArgumentException.class,
-                () -> bishopBlack.isDiagonal(Cell.C1, Cell.C2)
+        Cell position = bishopBlack.position();
+        ImpossibleMoveException exception = assertThrows(
+                ImpossibleMoveException.class,
+                () -> bishopBlack.way(Cell.C2)
         );
-        String expected = "Could not way by diagonal from %s to %s", position, dest;
+        String expected = String.format("Could not way by diagonal from %s to %s", position, Cell.C2);
         assertThat(exception.getMessage()).isEqualTo(expected);
 
     }

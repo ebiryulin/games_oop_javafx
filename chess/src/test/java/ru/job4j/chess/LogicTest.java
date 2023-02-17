@@ -8,7 +8,6 @@ import ru.job4j.chess.firuges.black.BishopBlack;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@Disabled("Тесты отключены. Удалить аннотацию после реализации всех методов по заданию.")
 public class LogicTest {
 
     @Test
@@ -19,5 +18,26 @@ public class LogicTest {
             logic.move(Cell.C1, Cell.H6);
         });
         assertThat(exception.getMessage()).isEqualTo("Figure not found on the board.");
+    }
+
+    @Test
+    public void whenMoveThenFigureOccupiedCellException()
+            throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
+        Logic logic = new Logic();
+
+        OccupiedCellException exception = assertThrows(OccupiedCellException.class, () -> {
+            logic.move(Cell.C1, Cell.H6);
+        });
+        assertThat(exception.getMessage()).isEqualTo("Cells are already occupied");
+    }
+
+    @Test
+    public void whenMoveThenFigureImpossibleMoveException()
+            throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
+        Logic logic = new Logic();
+        ImpossibleMoveException exception = assertThrows(ImpossibleMoveException.class, () -> {
+            logic.move(Cell.C1, Cell.H6);
+        });
+        assertThat(exception.getMessage()).isEqualTo("The move is out of rules");
     }
 }
