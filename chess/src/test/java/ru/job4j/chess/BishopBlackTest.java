@@ -43,7 +43,8 @@ public class BishopBlackTest {
                 ImpossibleMoveException.class,
                 () -> bishopBlack.way(Cell.C2)
         );
-        String expected = String.format("Couldn't way by diagonal from %s to %s", position, Cell.C2);
+        String expected = String.format("Could not way by diagonal from %s to %s",
+                position, Cell.C2);
         assertThat(exception.getMessage()).isEqualTo(expected);
 
     }
