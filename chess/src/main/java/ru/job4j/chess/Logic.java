@@ -22,8 +22,8 @@ public final class Logic {
         figures[index] = figures[index].copy(dest);
     }
 
-    private boolean free(Cell[] steps) throws OccupiedCellException {
-        for (int index = 0; index < figures.length; index++) {
+    public boolean free(Cell[] steps) throws OccupiedCellException {
+        for (Figure f : figures) {
             Figure figure = figures[index];
             if (figure.position().equals(steps[index])) {
                 throw new OccupiedCellException();
