@@ -11,7 +11,6 @@ import ru.job4j.chess.firuges.black.BishopBlack;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-
 public class BishopBlackTest {
 
     @Test
@@ -44,7 +43,7 @@ public class BishopBlackTest {
                 ImpossibleMoveException.class,
                 () -> bishopBlack.way(Cell.C2)
         );
-        String expected = String.format("Could not way by diagonal from %s to %s", position, Cell.C2);
+        String expected = String.format("Couldn't way by diagonal from %s to %s", position, Cell.C2);
         assertThat(exception.getMessage()).isEqualTo(expected);
 
     }
