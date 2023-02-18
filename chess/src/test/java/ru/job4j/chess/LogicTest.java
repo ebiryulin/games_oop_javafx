@@ -32,7 +32,7 @@ public class LogicTest {
         OccupiedCellException exception = assertThrows(OccupiedCellException.class, () -> {
             logic.move(Cell.C1, Cell.G5);
         });
-        assertThat(exception.getMessage()).isEqualTo(null);
+        assertThat(exception.getMessage()).isEqualTo("Figure could not make this step");
     }
 
     @Test
