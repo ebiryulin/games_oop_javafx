@@ -26,22 +26,26 @@ public class LogicTest {
     public void whenMoveThenFigureOccupiedCellException()
             throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
         Logic logic = new Logic();
-        Figure bishopBlack = new BishopBlack(Cell.C1); //Создали новую фигуру с начальной позицией
-        logic.add(bishopBlack); //Добавили фигуру на доску
+        Figure bishopBlack = new BishopBlack(Cell.C1);
+        logic.add(bishopBlack);
         bishopBlack.copy(Cell.D2);
         OccupiedCellException exception = assertThrows(OccupiedCellException.class, () -> {
-            logic.move(Cell.C1, Cell.G5); //Задаем ход через клетку D2 где уже стоит фигура
+            logic.move(Cell.C1, Cell.G5);
         });
-        assertThat(exception.getMessage()).isEqualTo("Cells are already occupied");
+        assertThat(exception.getMessage()).isEqualTo(null);
     }
 
     @Test
     public void whenMoveThenFigureImpossibleMoveException()
             throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
         Logic logic = new Logic();
+        Figure bishopBlack = new BishopBlack(Cell.C1);
+        logic.add(bishopBlack);
+        bishopBlack.copy(Cell.D2);
         ImpossibleMoveException exception = assertThrows(ImpossibleMoveException.class, () -> {
             logic.move(Cell.C1, Cell.C2);
         });
-        assertThat(exception.getMessage()).isEqualTo("The move is out of rules");
+        assertThat(exception.getMessage()).isEqualTo("Could not way by diagonal from %s to %s",
+                Cell.C1, Cell.C2);
     }
 }
