@@ -26,9 +26,11 @@ public class LogicTest {
     public void whenMoveThenFigureOccupiedCellException()
             throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
         Logic logic = new Logic();
-        BishopBlack bishopBlack = new BishopBlack(Cell.D2);
+        Figure bishopBlack = new BishopBlack(Cell.C1); //Создали новую фигуру с начальной позицией
+        logic.add(bishopBlack); //Добавили фигуру на доску
+        bishopBlack.copy(Cell.D2);
         OccupiedCellException exception = assertThrows(OccupiedCellException.class, () -> {
-            bishopBlack.position(); logic.move(Cell.C1, Cell.E3);
+            logic.move(Cell.C1, Cell.G5); //Задаем ход через клетку D2 где уже стоит фигура
         });
         assertThat(exception.getMessage()).isEqualTo("Cells are already occupied");
     }
