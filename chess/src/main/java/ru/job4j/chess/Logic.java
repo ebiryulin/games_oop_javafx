@@ -26,11 +26,10 @@ public final class Logic {
         for (Figure f : figures) {
             Figure figure = figures[index];
             for (Cell c : steps) {
-                Cell cell = steps[index];
-                if (figure != null && figure.position().equals(cell)) {
-                    throw new OccupiedCellException("Figure could not make this step");
+                if (figure != null && figure.position().equals(c)) {
                 }
             }
+            throw new OccupiedCellException("Figure could not make this step");
         }
         return true;
     }
