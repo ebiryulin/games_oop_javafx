@@ -23,13 +23,12 @@ public final class Logic {
     }
 
     public boolean free(Cell[] steps) throws OccupiedCellException {
-        for (Figure f : figures) {
-            Figure figure = figures[index];
-            for (Cell c : steps) {
-                if (figure != null && figure.position().equals(c)) {
+        for (Figure figure : figures) {
+            for (Cell cell : steps) {
+                if (figure != null && figure.position().equals(cell)) {
+                    throw new OccupiedCellException("Figure could not make this step");
                 }
             }
-            throw new OccupiedCellException("Figure could not make this step");
         }
         return true;
     }
