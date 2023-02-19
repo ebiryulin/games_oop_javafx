@@ -28,7 +28,7 @@ public class LogicTest {
         Logic logic = new Logic();
         Figure bishopBlack = new BishopBlack(Cell.C1);
         logic.add(bishopBlack);
-        bishopBlack.copy(Cell.D2);
+        logic.add(bishopBlack.copy(Cell.D2));
         OccupiedCellException exception = assertThrows(OccupiedCellException.class, () -> {
             logic.move(Cell.C1, Cell.G5);
         });
